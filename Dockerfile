@@ -1,4 +1,4 @@
-FROM sangdongvan/bakerydemo-rest-cache
+FROM thanhnguyendiem/bakerydemo-rest-cache
 
 RUN mkdir /code/
 WORKDIR /code/
