@@ -1,3 +1,6 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 from wagtail.api.v2.endpoints import BaseAPIEndpoint
 from bakerydemo.blog.models import BlogPage
 from .serializers import BlogSerializer
@@ -19,6 +22,7 @@ class BlogAPIEndpoint(BaseAPIEndpoint):
         'date_published',
     ]
 
+    @method_decorator(cache_page(60 * 2))
     def listing_view(self, request, *args, **kwargs):
         return super(BlogAPIEndpoint, self).listing_view(request, *args, **kwargs)
 
